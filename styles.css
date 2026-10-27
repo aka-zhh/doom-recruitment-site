@@ -1,0 +1,479 @@
+/* ==========================================================================
+   THE DOOMSDAY SYSTEM - STYLESHEET
+   Aesthetic: Latverian High-Tech Citadel / Sovereign Villain Dark Metallic
+   Neon Accent: #39ff14 (Doom Green)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Cinzel:wght@700;900&display=swap');
+
+:root {
+  --doom-green: #39ff14;
+  --doom-green-glow: rgba(57, 255, 20, 0.45);
+  --doom-green-bright: #62ff44;
+  --doom-green-dark: #155708;
+  --doom-emerald: #0f381e;
+  --doom-dark-900: #050608;
+  --doom-dark-800: #0a0d12;
+  --doom-dark-700: #121720;
+  --doom-metallic-base: #1e2430;
+  --doom-metallic-shine: #3b4455;
+  --doom-silver: #c5cbd6;
+  --doom-silver-bright: #e2e8f0;
+  --doom-ash: #4a5568;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050608;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2430;
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--doom-green);
+  box-shadow: 0 0 10px var(--doom-green);
+}
+
+/* Base resets & typography */
+body {
+  background-color: var(--doom-dark-900);
+  color: #cbd5e1;
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+  letter-spacing: 0.03em;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Orbitron', 'Cinzel', sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.font-tech {
+  font-family: 'Chakra Petch', monospace;
+}
+
+/* Scanline Overlay Effect */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.02),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.02)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Metallic Brushed Surfaces */
+.bg-metallic-plate {
+  background: linear-gradient(135deg, #181d26 0%, #0d1017 50%, #151a24 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.bg-metallic-steel {
+  background: linear-gradient(180deg, #2a3342 0%, #171d26 40%, #0f131a 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 2px solid #050608;
+}
+
+.bg-metallic-button {
+  background: linear-gradient(180deg, #333d4e 0%, #1c222b 45%, #141922 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 4px 15px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-metallic-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-25deg);
+  transition: 0.6s;
+}
+
+.bg-metallic-button:hover::after {
+  left: 200%;
+}
+
+/* Glowing Neon Elements */
+.text-doom-glow {
+  color: var(--doom-green);
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.6), 0 0 25px rgba(57, 255, 20, 0.3);
+}
+
+.border-doom-glow {
+  border-color: var(--doom-green);
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.35);
+}
+
+.box-doom-glow {
+  box-shadow: 0 0 25px rgba(57, 255, 20, 0.25), inset 0 0 15px rgba(57, 255, 20, 0.1);
+}
+
+/* Pulsing Doom Button */
+@keyframes doomPulse {
+  0% {
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.4), inset 0 0 10px rgba(57, 255, 20, 0.2);
+    border-color: rgba(57, 255, 20, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(57, 255, 20, 0.85), inset 0 0 20px rgba(57, 255, 20, 0.5), 0 0 60px rgba(57, 255, 20, 0.3);
+    border-color: #39ff14;
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.4), inset 0 0 10px rgba(57, 255, 20, 0.2);
+    border-color: rgba(57, 255, 20, 0.6);
+  }
+}
+
+.btn-doom-pulse {
+  animation: doomPulse 2.8s infinite ease-in-out;
+}
+
+/* Cyber Hex Grid Background */
+.cyber-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(57, 255, 20, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(57, 255, 20, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* -------------------------------------------------------------
+   GATEWAY OF DOOM - INTRO OVERLAY & 3D DOORS
+   ------------------------------------------------------------- */
+
+#gateway-overlay {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s;
+}
+
+#gateway-overlay.unlocked {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.door-viewport {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  display: flex;
+}
+
+.gate-door {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 3.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+  backface-visibility: hidden;
+}
+
+.gate-door-left {
+  transform-origin: left center;
+  background: 
+    linear-gradient(90deg, #090b0e 0%, #151b24 35%, #0e1218 85%, #050608 100%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 2px, transparent 2px, transparent 6px);
+  border-right: 4px solid #1f2733;
+}
+
+.gate-door-right {
+  transform-origin: right center;
+  background: 
+    linear-gradient(270deg, #090b0e 0%, #151b24 35%, #0e1218 85%, #050608 100%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 2px, transparent 2px, transparent 6px);
+  border-left: 4px solid #1f2733;
+}
+
+/* Open states */
+.doors-opening .gate-door-left {
+  transform: rotateY(-108deg);
+}
+
+.doors-opening .gate-door-right {
+  transform: rotateY(108deg);
+}
+
+/* Heavy Steel Door Texture & Rivets */
+.door-panel-relief {
+  position: absolute;
+  inset: 20px;
+  border: 4px solid #28313e;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.9);
+  background: radial-gradient(circle at 50% 50%, #18202b 0%, #0d1117 70%);
+}
+
+.rivet-row {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+}
+
+.rivet {
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 35% 35%, #5a6679 0%, #1c222c 70%, #080a0e 100%);
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.4);
+}
+
+/* Center Emblem / Doom Citadel Crest */
+.crest-half-left, .crest-half-right {
+  position: absolute;
+  top: 50%;
+  width: 120px;
+  height: 240px;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+.crest-half-left {
+  right: -2px;
+}
+
+.crest-half-right {
+  left: -2px;
+}
+
+/* Green Energy Seam */
+.energy-seam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: var(--doom-green);
+  box-shadow: 0 0 20px var(--doom-green), 0 0 40px var(--doom-green);
+  z-index: 25;
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+.energy-seam-left {
+  right: -3px;
+}
+
+.energy-seam-right {
+  left: -3px;
+}
+
+/* DOOM SILHOUETTE & ENERGY CASTING ANIMATION */
+.doom-figure-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  pointer-events: none;
+  transition: transform 3.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 2.5s ease;
+}
+
+.doors-opening .doom-figure-container {
+  transform: translateX(-50%) scale(1.18) translateZ(120px);
+  opacity: 0.15;
+}
+
+@keyframes energyCrack {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(57, 255, 20, 0.6)) drop-shadow(0 0 35px rgba(57, 255, 20, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 35px rgba(57, 255, 20, 1)) drop-shadow(0 0 70px rgba(57, 255, 20, 0.7));
+  }
+}
+
+.doom-energy-glow {
+  animation: energyCrack 1.8s infinite ease-in-out;
+}
+
+/* Pushing arms / magic blast rays */
+.magic-ray {
+  position: absolute;
+  height: 4px;
+  background: linear-gradient(90deg, #39ff14, #ffffff, transparent);
+  box-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14;
+  transform-origin: left center;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.doors-opening .magic-ray {
+  opacity: 0.9;
+}
+
+/* Light beam burst from inside gateway */
+.gateway-portal-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(57, 255, 20, 0.4) 0%, rgba(15, 56, 30, 0.6) 30%, #050608 85%);
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+}
+
+.doors-opening .gateway-portal-glow {
+  opacity: 1;
+}
+
+/* -------------------------------------------------------------
+   TEAM SECTION (THE INNER CIRCLE)
+   ------------------------------------------------------------- */
+.card-inner-circle {
+  position: relative;
+  border-radius: 4px;
+  background: linear-gradient(145deg, #131822 0%, #0c0f16 70%, #07090d 100%);
+  border: 1px solid #1e2634;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.card-inner-circle:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--doom-green);
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(57, 255, 20, 0.35),
+    inset 0 0 20px rgba(57, 255, 20, 0.1);
+}
+
+.card-inner-circle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.card-inner-circle:hover::before {
+  opacity: 1;
+}
+
+/* Glowing Corner Accents */
+.corner-bracket {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: #2e3b4e;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.card-inner-circle:hover .corner-bracket {
+  border-color: var(--doom-green);
+  box-shadow: 0 0 8px var(--doom-green);
+}
+
+.corner-tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+.corner-tr { top: -1px; right: -1px; border-top: 2px solid; border-right: 2px solid; }
+.corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid; border-left: 2px solid; }
+.corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
+
+/* -------------------------------------------------------------
+   RECRUITMENT FORM (INITIATION SEQUENCE)
+   ------------------------------------------------------------- */
+.form-input-dark {
+  background: #090c12;
+  border: 1px solid #1d2533;
+  color: #e2e8f0;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.form-input-dark:focus {
+  outline: none;
+  border-color: var(--doom-green);
+  background: #0d121c;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.25), inset 0 0 10px rgba(57, 255, 20, 0.05);
+}
+
+/* Metallic submit button flash */
+@keyframes submitFlash {
+  0% {
+    background-color: #39ff14;
+    box-shadow: 0 0 50px #39ff14, 0 0 100px #39ff14;
+    color: #000;
+  }
+  50% {
+    background-color: #ffffff;
+    box-shadow: 0 0 80px #ffffff, 0 0 150px #39ff14;
+    color: #000;
+  }
+  100% {
+    background-color: #1e2634;
+    box-shadow: 0 0 25px rgba(57, 255, 20, 0.4);
+    color: #39ff14;
+  }
+}
+
+.btn-submitting {
+  animation: submitFlash 0.9s cubic-bezier(0.1, 0.9, 0.2, 1) forwards !important;
+}
+
+/* Modal Dossier Appearance */
+@keyframes modalGlitch {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.02) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.dossier-modal-animate {
+  animation: modalGlitch 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* HUD Badges & Indicators */
+.hud-tag {
+  background: rgba(57, 255, 20, 0.08);
+  border: 1px solid rgba(57, 255, 20, 0.25);
+  color: var(--doom-green);
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.4);
+}
+
+.hud-tag-crimson {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  text-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+}
+
+/* Parallax subtle floating */
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-subtle-float {
+  animation: subtleFloat 6s ease-in-out infinite;
+}
